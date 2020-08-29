@@ -12,7 +12,12 @@ useKoppo(app, {
   components: {
     Test: { component: Test, resolveData: () => Promise.resolve({}) },
   },
-  listRoutes: async () => [{ path: "/test", context: {}, component: "Test" }],
+  listRoutes: async () => [
+    { path: "/test", context: {}, component: "Test" },
+    { path: "/test2", context: {}, component: "Test" },
+    { path: "/test3", context: {}, component: "Test" },
+  ],
+  autoCacheCount: 5,
 });
 
 const port = process.env.PORT || 4000;
