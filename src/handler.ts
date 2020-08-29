@@ -8,7 +8,7 @@ import { Html } from "./Html";
 
 const cachedRoutes = async (config: KoppoConfig): Promise<Route[]> => {
   const key = "koppo:routes";
-  const cached = cache.get(key);
+  const cached = config.bypassCache ? null : cache.get(key);
   if (cached) {
     return cached as Route[];
   } else {
@@ -25,7 +25,7 @@ const cachedResponse = async (
   path: string
 ): Promise<{ html: string; cacheStatus: string } | null> => {
   const key = `koppo:response:${path}`;
-  const cached = cache.get(key);
+  const cached = config.bypassCache ? null : cache.get(key);
   if (cached) {
     return { html: cached, cacheStatus: "HIT" };
   } else {

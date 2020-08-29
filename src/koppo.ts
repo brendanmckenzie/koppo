@@ -16,6 +16,7 @@ export type Component = {
 export type KoppoConfig = {
   listRoutes: () => Promise<Route[]>;
   components: { [alias: string]: Component };
+  bypassCache?: boolean;
 };
 
 export const useKoppo = (app: Express.Application, config: KoppoConfig) => {
